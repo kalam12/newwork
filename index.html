@@ -998,23 +998,7 @@
 		</div>
 	</div>
 </div>
-	
-<main id="main">
-  <gallery ref="gallery" v-bind:images="images" v-on:next="next">
-  </gallery>
-</main>
 
-<template id="gallery_template">
-  <transition-group tag="figure" class="Gallery" name="open">
-    <img v-for="(image, index) of images" 
-         v-bind:src="image" 
-         v-bind:key="index"
-         v-on:click="onClick"
-         v-bind:style="{'--circle-x': x, '--circle-y': y}">
-  </transition-group>
-</template>
-
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.min.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
 	<script>
 		window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')
