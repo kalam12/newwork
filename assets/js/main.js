@@ -56,4 +56,61 @@ $(document).ready(function($){
 	
 	
 	
+	
+	// ---- bground style
+	
+	
+	
+Vue.component('gallery', {
+  template: '#gallery_template',
+  props: {
+    images: Array
+  },
+  data() {
+    return {
+      x: '100%',
+      y: '100%'
+    }
+  },
+  methods: {
+    onClick(event) {
+      const x = event.offsetX - event.target.offsetLeft
+      const y = event.offsetY - event.target.offsetTop
+      const xPercent = `${Math.round(100 * x / event.target.offsetWidth)}%`
+      const yPercent = `${Math.round(100 * y / event.target.offsetHeight)}%`
+      this.x = xPercent
+      this.y = yPercent
+      this.$emit('next', {x: xPercent, y: yPercent})
+    }
+  }
+})
+
+const vm = new Vue({
+  el: '#main',
+  data: {
+    images: [
+      'https://images.pexels.com/photos/794064/pexels-photo-794064.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+      'https://images.pexels.com/photos/871495/pexels-photo-871495.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+      'https://images.pexels.com/photos/1524105/pexels-photo-1524105.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+      'https://images.pexels.com/photos/1497244/pexels-photo-1497244.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+    ]
+  },
+   methods: {
+    next() {
+      const image = this.images.shift()
+      this.$nextTick(() => this.images.push(image))
+    }
+  }
+});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }(jQuery));
